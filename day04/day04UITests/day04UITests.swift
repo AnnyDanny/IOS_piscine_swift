@@ -2,8 +2,8 @@
 //  day04UITests.swift
 //  day04UITests
 //
-//  Created by MacBook on 25.03.2019.
-//  Copyright © 2019 MacBook. All rights reserved.
+//  Created by Ganna DANYLOVA on 3/20/19.
+//  Copyright © 2019 Ganna DANYLOVA. All rights reserved.
 //
 
 import XCTest
