@@ -86,6 +86,9 @@
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="get_wteets:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="ka8-xv-Drm"/>
+                            </connections>
                         </textField>
                     </navigationItem>
                     <connections>

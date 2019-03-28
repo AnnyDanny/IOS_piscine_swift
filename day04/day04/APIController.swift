@@ -26,6 +26,8 @@ class APIController {
         var name : String?
         var date : String?
         var text : String?
+        var dateT : DateFormatter?
+        var newDate : String?
         
         let req = requestTweet.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         let urlPath: String = "https://api.twitter.com/1.1/search/tweets.json?q=\(req)&lang=en&count=100&result_type=recent"
@@ -44,13 +46,14 @@ class APIController {
                         text = (statuses["text"] as! String)
                         name = statuses["user"]!["name"] as? String
                         date = statuses["created_at"] as? String
-//                        dateTruncate = DateFormatter()
-//                        dateTruncate?.dateFormat =  "E MMM dd HH:mm:ss Z yyyy"
+                        dateT = DateFormatter()
+                        dateT?.dateFormat =  "E MMM dd HH:mm:ss Z yyyy"
                         
-//                        if let date = dateTruncate?.date(from: date!) {
-//                            dateTruncate?.dateFormat = "dd/MM/yyyy HH:mm"
-//                            newDate = dateTruncate?.string(from: date)
-//                        self.disTweets.append(Tweet(name : name!, text : text!, date : date!))
+                        if let date = dateT?.date(from: date!) {
+                            dateT?.dateFormat = "dd/MM/yyyy HH:mm"
+                            newDate = dateT?.string(from: date)
+                    }
+                        self.disTweets.append(Tweet(name : name!, desc : text!, date : newDate!))
                     }
                     if self.delegate != nil  {
                         self.delegate?.proTweet(tweets: self.disTweets)

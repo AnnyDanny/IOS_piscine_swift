@@ -108,7 +108,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         textField.text = text.text
         search = (textField?.text)!
     }
-
+    
+    
+    @IBAction func get_wteets(_ sender: UITextField) {
+        let newApi = APIController(delegate: self, token: self.token!)
+        newApi.requestTweets(requestTweet: self.search)
+    }
+    
 }
 
 
