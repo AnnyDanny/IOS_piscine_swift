@@ -1,8 +1,8 @@
-00. create tweet struct in file "TweetStruct.swift" +
+00. created tweet struct in file "TweetStruct.swift" +
 
-01. create APITweeterDelegateProtocol in file "APITwitterDelegate.swift" +
+01. created APITweeterDelegateProtocol in file "APITwitterDelegate.swift" +
 
-02. create APIController class in file "APIController.swift" +-
+02. created APIController class in file "APIController.swift" +-
 (not enough for:
 A method that will take a String argument and that will have to execute a request to twitter to get the last 100 english tweets containing String and call the
 corresponding delegate methods.)
