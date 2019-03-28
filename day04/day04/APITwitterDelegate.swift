@@ -10,6 +10,6 @@ import UIKit
 import Foundation
 
 protocol APITwitterDelegate: NSObjectProtocol {
-    func tweet(tweet: [Tweet])
-    func error(error: NSError)
+    func proTweet(tweets: [Tweet])
+    func ifError(error: NSError)
 }
