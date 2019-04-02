@@ -10,5 +10,35 @@ class Deck : NSObject {
 
 
 extension Array {
-    let diceRoll = Int(arc4random_uniform(UInt32(6)))
+	mutating func shuffles_randomly(){
+		var length : Int = 0
+		var arr = self
+		for _ in arr {
+			length += 1
+		}
+		var new : UInt32 = 0
+		var numb = [Int](repeating : -1, count : length)
+		let count = 0..<length
+		func ifPresent(toCheck : UInt32) -> Bool {
+			for n in numb {
+				if toCheck == n {
+					return false
+				}
+			}
+			return true
+	}
+	var result = false
+	for i in count {
+		repeat {
+			new = arc4random_uniform(UInt32(length))
+			if (ifPresent(toCheck: new)) {
+				result = true
+			}
+			}
+			while (!result)
+			arr[Int(new)] = self[i]
+			numb[i] = Int(new)
+		}
+		self = arr
+	}
 }

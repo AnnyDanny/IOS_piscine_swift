@@ -1,7 +1,22 @@
-import Foundation
+print("""
 
-var tab = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+♤ ♥ ♧ ♦ allCards ♤ ♥ ♧ ♦
 
-print("original array : \(tab)\n")
-print("shuffled array 1 : \(tab.shuffled)\n")
-print("shuffled array 2 : \(tab.shuffled)\n")
+""")
+
+for card in Deck.allCards {
+	print(card)
+}
+
+print("""
+
+♧ ♥ ♦ ♤ Shuffled allCards ♥ ♤ ♦ ♧
+
+""")
+
+var arrShuffled = Deck.allCards
+arrShuffled.shuffles_randomly()
+
+for card in arrShuffled {
+	print(card)
+}

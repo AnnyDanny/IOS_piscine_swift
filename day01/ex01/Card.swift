@@ -5,7 +5,7 @@ class Card: NSObject {
     var value : Value
     override var description : String
     {
-        return "describe cards \(self.color), \(self.value) what"
+        return "describe cards: color: \(self.color), value: \(self.value)"
     }
     init (Color color: Color, Value value: Value) {
         self.color = color
