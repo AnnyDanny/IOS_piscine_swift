@@ -25,21 +25,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                           URL(string: "https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/demo-1")!
 //                  "https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/demo-1.jpeg"
     ]
-    
-//    @objc func backAction(){
-//        //print("Back Button Clicked")
-//        dismiss(animated: true, completion: nil)
-//    }
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
-//        self.navigationItem.title = "Images"
-        
-     
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backAction))
-
     }
     
         override func viewWillAppear(_ animated: Bool) {
@@ -47,35 +37,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
             self.navigationItem.title = "Images"
         }
-    
-//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-//        print("In handler")
-//        return true
-//    }
-
-
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        print("hello1")
-//        if segue.identifier == "NewView" {
-//            let im = segue.destination as! NewView
-//            im.selectedImage = selectedImage
-//        }
-//    }
 
     @IBAction func imageTapped(_ sender: ImageTapGesture) {
         print("hello2")
-//        selectedImage = images[sender.imageIndex!]
-//        performSegue(withIdentifier: "NewView", sender: self)
         let myImage:NewView = self.storyboard?.instantiateViewController(withIdentifier: "NewView") as! NewView
         myImage.selectedImage = images[sender.imageIndex!]
         self.present(myImage, animated: true, completion: nil)
-//        self.dismiss(animated: true, completion: nil)
-
     }
     
     func createALert () {
-        let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+        let alert = UIAlertController(title: "ERROR", message: "Cannot access to https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/demo-1.jpg", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -87,7 +59,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let Cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath as IndexPath) as! CollectionViewCell
         Cell.activityIndicator.startAnimating()
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-//        let tap = ImageTapGesture(target: self, action: #selector(getter: tabGesture))
         let tap = ImageTapGesture(target: self, action: #selector(imageTapped(_:)))
         tap.imageIndex = indexPath.row
         Cell.image.addGestureRecognizer(tap)
@@ -110,38 +81,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             else {
             print("error")
             self.createALert()
+            }
         }
-            
-//       let myImage:NewView = self.storyboard?.instantiateViewController(withIdentifier: "NewView") as! NewView
-//            myImage.selectedImage = self.images[indexPath.row]
-//       self.present(myImage, animated: true, completion: nil)
-            
-        }
-        
         return Cell
     }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: 180, height: 160.0)
-//    }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 10.0
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 20.0
-//    }
 }
-
 
 class ImageTapGesture: UITapGestureRecognizer {
     var imageIndex : Int?
 }
-
-//DispatchQueue.main.async {
-//    Cell.image.image = UIImage(data: data)
-//}
-

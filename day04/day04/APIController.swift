@@ -35,7 +35,6 @@ class APIController {
         let request: NSMutableURLRequest = NSMutableURLRequest(url: url!)
         request.httpMethod = "GET"
         request.setValue("Bearer " + self.token, forHTTPHeaderField: "Authorization")
-        
         let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
             do {
                 if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? Dictionary<String, Any> {

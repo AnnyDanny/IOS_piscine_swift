@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class ViewController: UIViewController {
 
 //    let grant_type = "client_credentials"
@@ -20,6 +22,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         token_access()
+        getRequest()
     }
 
     func token_access() {
@@ -47,15 +50,101 @@ class ViewController: UIViewController {
             }
         }
         task.resume()
-        
-        
-//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-//            if let response = response {
-//                print(response)
-//            }
-//        }
-//        task.resume()
-//    }
     }
+    
+    
+    func getRequest(){
+
+        let urlPath: String = "https://api.intra.42.fr/v2/messages"
+        let accessToken = "ccfcce4117499e9b2a705d389d4f8cbb7bc5913c1dc420a974dfa795006091ad"
+        let url = URL(string: urlPath)
+        let request: NSMutableURLRequest = NSMutableURLRequest(url: url!)
+        request.httpMethod = "GET"
+        request.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
+        
+        let session = URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
+        if let response = response {
+            print("response")
+            print(response)
+        }
+        guard let data = data else { return }
+        print("data")
+        print(data)
+        do {
+          let json = try JSONSerialization.jsonObject(with: data, options: [])
+          print("json")
+          print(json)
+        } catch {
+          print(error)
+        }
+    }
+    session.resume()
+}
 }
 
+
+
+//
+//        struct Forum {
+//            let name : String
+//            let text : String
+//            let date: String
+//        }
+
+//        extension Forum: CustomStringConvertible {
+//            var description: String {
+//                return "\(name), \(desc)"
+//            }
+//        }
+
+//        var disForum = [Forum]()
+
+//        var name : String?
+//        var date : String?
+//        var text : String?
+
+
+//        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error
+//            in
+//            do {
+//                if let jsonRes = try JSONSerialization.jsonObject(with: data!, options: []) as? Dictionary<String, Any> {
+//                    print(jsonRes)
+//                    let info = jsonRes["statuses"] as? [[String:AnyObject]]
+//                    print(info as Any)
+//                    for statuses in info!
+//                    {
+//                        text = (statuses["text"] as! String)
+//                        name = statuses["user"]!["name"] as? String
+////                        date = statuses["created_at"] as? String
+//                    }
+//                    disForum.append(Forum(name : name!, text : text!))
+//            }
+//        }
+//            catch let error as NSError {
+//                print(error)
+//            }
+//    }
+//    task.resume()
+
+
+
+
+//        let session = URLSession.shared
+//        session.dataTask(with: url!) { (data, response, error) in
+//            if let response = response {
+//                print("response")
+//                print(response)
+//            }
+//
+//            guard let data = data else { return }
+//            print("data")
+//            print(data)
+//
+//            do {
+//                let json = try JSONSerialization.jsonObject(with: data, options: [])
+//                print("json")
+//                print(json)
+//            } catch {
+//                print(error)
+//            }
+//            }.resume()
