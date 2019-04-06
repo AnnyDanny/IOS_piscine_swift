@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5CE546182258D3970060C351 /* textViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE546172258D3970060C351 /* textViewController.swift */; };
 		5CF181AC2257A1BF006D9DE3 /* ForumDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF181AB2257A1BF006D9DE3 /* ForumDelegate.swift */; };
 		5CFFB789225637B900C8C842 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFFB788225637B900C8C842 /* AppDelegate.swift */; };
 		5CFFB78B225637B900C8C842 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFFB78A225637B900C8C842 /* ViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5CE546172258D3970060C351 /* textViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textViewController.swift; sourceTree = "<group>"; };
 		5CF181AB2257A1BF006D9DE3 /* ForumDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumDelegate.swift; sourceTree = "<group>"; };
 		5CFFB785225637B900C8C842 /* rush00.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rush00.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CFFB788225637B900C8C842 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				5CFFB78F225637B900C8C842 /* Assets.xcassets */,
 				5CFFB791225637B900C8C842 /* LaunchScreen.storyboard */,
 				5CFFB794225637B900C8C842 /* Info.plist */,
+				5CE546172258D3970060C351 /* textViewController.swift */,
 			);
 			path = rush00;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				5CFFB78B225637B900C8C842 /* ViewController.swift in Sources */,
 				5CFFB789225637B900C8C842 /* AppDelegate.swift in Sources */,
 				5CF181AC2257A1BF006D9DE3 /* ForumDelegate.swift in Sources */,
+				5CE546182258D3970060C351 /* textViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
