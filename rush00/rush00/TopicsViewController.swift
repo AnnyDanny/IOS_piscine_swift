@@ -18,8 +18,10 @@ struct topic{
 }
 
 
-class TopicsViewController: UIViewController {
+class TopicsViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var topicTable: UITableView!
+    
+//    var urlToPass: String = ""
     
 //    var authSession: SFAuthenticationSession?
     
@@ -79,7 +81,7 @@ class TopicsViewController: UIViewController {
 //                        print("login:", author["login"] ?? "NC")
 //                        print(">>> Testing msg: ", message,"\nMarkdown: ", content["markdown"] ?? "NC")
                         self.topics.append(topic(name: (author["login"] as? String)! , data: (value["created_at"] as? String)!, msgUrl: (value["messages_url"] as? String)!))
-
+//                        print("topics--->>>", self.topics[msgUrl])
 /////                           DEBAG MODE!
 //                        print(">>> VALUE ---> ", value)
                     }
@@ -91,6 +93,7 @@ class TopicsViewController: UIViewController {
         }
         session.resume()
     }
+
 }
 
 
@@ -103,8 +106,29 @@ extension TopicsViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "topicCell")
         cell?.textLabel?.text = self.topics[indexPath.row].name
         cell?.detailTextLabel?.text = self.topics[indexPath.row].data
+//        cell?.
         return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        self.urlToPass =
+//       performSegue(withIdentifier: "toMessageView", sender: self)
+//        get_message(topics)if in
+        if indexPath == 0 {
+            
+        }
+        let cell = tableView.cellForRow(at: indexPath)
+        print("CELL=", cell)
+        
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        (segue.destination as? messageView)?.token = self.token
+        (segue.destination as? messageView)?.topics = self.topics
+        
     }
     
     
 }
+

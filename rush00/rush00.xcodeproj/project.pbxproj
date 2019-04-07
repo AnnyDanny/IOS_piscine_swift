@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C01C3CC225A28BB00EE2416 /* messageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01C3CB225A28BB00EE2416 /* messageView.swift */; };
 		5CE5461A225920B80060C351 /* TopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE54619225920B80060C351 /* TopicsViewController.swift */; };
 		5CF181AC2257A1BF006D9DE3 /* ForumDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF181AB2257A1BF006D9DE3 /* ForumDelegate.swift */; };
 		5CFFB789225637B900C8C842 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFFB788225637B900C8C842 /* AppDelegate.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C01C3CB225A28BB00EE2416 /* messageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = messageView.swift; sourceTree = "<group>"; };
 		5CE54619225920B80060C351 /* TopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsViewController.swift; sourceTree = "<group>"; };
 		5CF181AB2257A1BF006D9DE3 /* ForumDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumDelegate.swift; sourceTree = "<group>"; };
 		5CFFB785225637B900C8C842 /* rush00.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rush00.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +114,7 @@
 				5CFFB791225637B900C8C842 /* LaunchScreen.storyboard */,
 				5CFFB794225637B900C8C842 /* Info.plist */,
 				5CE54619225920B80060C351 /* TopicsViewController.swift */,
+				5C01C3CB225A28BB00EE2416 /* messageView.swift */,
 			);
 			path = rush00;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				5CFFB789225637B900C8C842 /* AppDelegate.swift in Sources */,
 				6D680AA1225A18240037F44C /* MsgViewController.swift in Sources */,
 				5CF181AC2257A1BF006D9DE3 /* ForumDelegate.swift in Sources */,
+				5C01C3CC225A28BB00EE2416 /* messageView.swift in Sources */,
 				5CE5461A225920B80060C351 /* TopicsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
