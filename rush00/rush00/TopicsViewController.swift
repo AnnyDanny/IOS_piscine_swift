@@ -7,29 +7,21 @@
 //
 
 import UIKit
+import SafariServices
+
 
 struct topic{
     var name: String
-    var data:String
-}
-
-extension TopicsViewController: UITableViewDelegate, UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return topics.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "topicCell")
-//        cell?.textLabel?.text = self.topics[indexPath.row].name
-        return cell!
-    }
-    
-    
+    var data: String
+//    var msg: String
+    var msgUrl: String
 }
 
 
 class TopicsViewController: UIViewController {
     @IBOutlet weak var topicTable: UITableView!
+    
+//    var authSession: SFAuthenticationSession?
     
     var token: String = ""
     var topics: [topic] = []
@@ -59,7 +51,7 @@ class TopicsViewController: UIViewController {
                 print(response)
             }
             guard let data = data else { return }
-            print("data")
+            print(">>> data <<<")
             print(data)
             do {
                 
@@ -77,15 +69,21 @@ class TopicsViewController: UIViewController {
                 print(json.first)
                 //            if let dic : [NSDictionary] = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [NSDictionary] {
                 
-                                DispatchQueue.main.async {
-                for value in json {
-                    let author: NSDictionary = (value["author"] as? NSDictionary)!
-                    print("\nAuthor:", author)
-                    print("date: ", value["created_at"] ?? "NC")
-                    print("login:", author["login"] ?? "NC")
-                    self.topics.append(topic(name: (author["login"] as? String)! , data: (value["created_at"] as? String)! ))
-                }
-                self.topicTable.reloadData()
+                DispatchQueue.main.async {
+                    for value in json {
+                        let author: NSDictionary = (value["author"] as? NSDictionary)!
+                        let message: NSDictionary = (value["message"] as? NSDictionary)!
+                        let content : NSDictionary = (message["content"] as! NSDictionary)
+//                        print("\nAuthor:", author)
+//                        print("date: ", value["created_at"] ?? "NC")
+//                        print("login:", author["login"] ?? "NC")
+//                        print(">>> Testing msg: ", message,"\nMarkdown: ", content["markdown"] ?? "NC")
+                        self.topics.append(topic(name: (author["login"] as? String)! , data: (value["created_at"] as? String)!, msgUrl: (value["messages_url"] as? String)!))
+
+/////                           DEBAG MODE!
+//                        print(">>> VALUE ---> ", value)
+                    }
+                    self.topicTable.reloadData()
                 }
             } catch {
                 print(error)
@@ -93,5 +91,20 @@ class TopicsViewController: UIViewController {
         }
         session.resume()
     }
+}
 
+
+extension TopicsViewController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return topics.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "topicCell")
+        cell?.textLabel?.text = self.topics[indexPath.row].name
+        cell?.detailTextLabel?.text = self.topics[indexPath.row].data
+        return cell!
+    }
+    
+    
 }
