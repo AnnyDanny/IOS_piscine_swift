@@ -46,6 +46,10 @@ class ViewController: UIViewController {
         
     }
     
+    @IBAction func log(_ sender: UIButton) {
+        print("hhhhhhhhhh")
+        get_session()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
     }

@@ -21,9 +21,9 @@ struct topic{
 class TopicsViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var topicTable: UITableView!
     
-//    var urlToPass: String = ""
-    
 //    var authSession: SFAuthenticationSession?
+    
+    var msgUrl: String = ""
     
     var token: String = ""
     var topics: [topic] = []
@@ -53,8 +53,8 @@ class TopicsViewController: UIViewController, UIGestureRecognizerDelegate {
                 print(response)
             }
             guard let data = data else { return }
-            print(">>> data <<<")
-            print(data)
+//            print(">>> data <<<")
+//            print(data)
             do {
                 
                 //            let json = try JSONSerialization.jsonObject(with: data, options: []) as? [NSDictionary]
@@ -66,9 +66,9 @@ class TopicsViewController: UIViewController, UIGestureRecognizerDelegate {
                 //            }
                 
                 let json :  [NSDictionary] = (try JSONSerialization.jsonObject(with: data, options: []) as? [NSDictionary])!
-                print("json")
+//                print("json")
                 //            print(json)
-                print(json.first)
+//                print(json.first)
                 //            if let dic : [NSDictionary] = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [NSDictionary] {
                 
                 DispatchQueue.main.async {
@@ -98,6 +98,7 @@ class TopicsViewController: UIViewController, UIGestureRecognizerDelegate {
 
 
 extension TopicsViewController: UITableViewDelegate, UITableViewDataSource{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return topics.count
     }
@@ -106,28 +107,22 @@ extension TopicsViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "topicCell")
         cell?.textLabel?.text = self.topics[indexPath.row].name
         cell?.detailTextLabel?.text = self.topics[indexPath.row].data
-//        cell?.
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        self.urlToPass =
-//       performSegue(withIdentifier: "toMessageView", sender: self)
-//        get_message(topics)if in
-        if indexPath == 0 {
-            
-        }
-        let cell = tableView.cellForRow(at: indexPath)
-        print("CELL=", cell)
+        self.msgUrl = topics[indexPath.row].msgUrl
         
-        
+       performSegue(withIdentifier: "toMessageView", sender: self)
+//        get_message(topics)
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         (segue.destination as? messageView)?.token = self.token
-        (segue.destination as? messageView)?.topics = self.topics
-        
+        (segue.destination as? messageView)?.msgUrl = self.msgUrl
     }
+    
     
     
 }
