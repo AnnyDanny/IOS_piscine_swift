@@ -23,7 +23,7 @@ extension TopicsViewController: UITableViewDelegate, UITableViewDataSource{
 //        cell?.textLabel?.text = self.topics[indexPath.row].name
         return cell!
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     
 }
 
@@ -70,9 +70,11 @@ class TopicsViewController: UIViewController {
                 //                    print("Property: \"\(key as String)\"")
                 //                }
                 //            }
-                
                 let json :  [NSDictionary] = (try JSONSerialization.jsonObject(with: data, options: []) as? [NSDictionary])!
-                print("json")
+//                if (json == nil) {
+//                    print("json == nil")
+//                }
+//                print("json")
                 //            print(json)
                 print(json.first)
                 //            if let dic : [NSDictionary] = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [NSDictionary] {
@@ -89,6 +91,7 @@ class TopicsViewController: UIViewController {
                 }
             } catch {
                 print(error)
+                print("error in get_topics")
             }
         }
         session.resume()

@@ -35,11 +35,17 @@ class FirstViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.distanceFilter = 10
         locationManager.startUpdatingLocation()
+        displayPlacesTaj()
+        displayPlacesNewYork()
+        displayPlacesLostallo()
+        displayPlacesThailand()
+        displayPlacesJapan()
     }
     
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        print("Location updated")
-//    }
+   
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("Location updated")
+    }
 
 }
 

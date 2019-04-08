@@ -31,7 +31,8 @@ class ViewController: UIViewController {
                 print(error!)
                 return
             }
-            print(successURL.absoluteString)
+            print("succsees")
+            print("--->>", successURL.absoluteString)
          
             self.token_access()
         }
@@ -64,6 +65,7 @@ class ViewController: UIViewController {
                     }
                 }
                 catch (let error) {
+                    print("error in token access")
                     print(error)
                 }
             }
