@@ -38,9 +38,9 @@ extension FirstViewController {
         annotation.subtitle = "One day i was there"
         annotation.coordinate = coord
         mapView.addAnnotation(annotation)
-        //        let ullpgr = UILongPressGestureRecognizer(target: self, action: #selector(FirstViewController.longpress(gestureRecognizer:)))
-        //        ullpgr.minimumPressDuration = 2
-        //        mapView.addGestureRecognizer(ullpgr)
+//                let ullpgr = UILongPressGestureRecognizer(target: self, action: #selector(FirstViewController.longpress(gestureRecognizer:)))
+//                ullpgr.minimumPressDuration = 2
+//                mapView.addGestureRecognizer(ullpgr)
     }
     func displayPlacesNewYork(){
         let coord = CLLocationCoordinate2D(latitude: 40.65443693109634, longitude: -74.1987348798828)
@@ -50,10 +50,13 @@ extension FirstViewController {
         let region = MKCoordinateRegionMake(coord, span)
         let annotation = MKPointAnnotation()
         mapView.setRegion(region, animated: true)
-        annotation.title = "NewYork"
-        annotation.subtitle = "One day I will be there"
+//        annotation.title = "NewYork"
+//        annotation.subtitle = "One day I will be there"
         annotation.coordinate = coord
         mapView.addAnnotation(annotation)
+//        let ullpgr = UILongPressGestureRecognizer(target: self, action: #selector(FirstViewController.longpress(gestureRecognizer:)))
+//        ullpgr.minimumPressDuration = 2
+//        mapView.addGestureRecognizer(ullpgr)
     }
     
     func displayPlacesLostallo(){
@@ -95,6 +98,30 @@ extension FirstViewController {
         annotation.title = "Japan"
         annotation.subtitle = "Sometimes I will be there"
         annotation.coordinate = coord
+        mapView.addAnnotation(annotation)
+    }
+    
+    func displayPlacesParis(){
+        let coord = CLLocationCoordinate2D(latitude: 48.87173461287289, longitude: 2.3490253568359094)
+        let LanDelte: CLLocationDegrees = 0.06
+        let LonDelte: CLLocationDegrees = 0.05
+        let span = MKCoordinateSpanMake(LanDelte, LonDelte)
+        let region = MKCoordinateRegionMake(coord, span)
+        let annotation = MKPointAnnotation()
+        mapView.setRegion(region, animated: true)
+        annotation.title = "Paris"
+        annotation.subtitle = "Sometimes I will be there"
+        annotation.coordinate = coord
+        mapView.addAnnotation(annotation)
+    }
+    
+    @objc func longpress(gestureRecognizer: UIGestureRecognizer) {
+        let touchPoint = gestureRecognizer.location(in: self.mapView)
+        let coordinate = mapView.convert(touchPoint, toCoordinateFrom: self.mapView)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        annotation.title = "NewYork"
+        annotation.subtitle = "One day I will be there"
         mapView.addAnnotation(annotation)
     }
     

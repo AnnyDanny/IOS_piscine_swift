@@ -35,12 +35,24 @@ class FirstViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.distanceFilter = 10
         locationManager.startUpdatingLocation()
+        let ullpgr = UILongPressGestureRecognizer(target: self, action: #selector(FirstViewController.longpress(gestureRecognizer:)))
+        ullpgr.minimumPressDuration = 2
+        mapView.addGestureRecognizer(ullpgr)
         displayPlacesTaj()
         displayPlacesNewYork()
         displayPlacesLostallo()
         displayPlacesThailand()
         displayPlacesJapan()
+        displayPlacesParis()
+//        let ullpgr = UILongPressGestureRecognizer(target: self, action: #selector(FirstViewController.longpress(gestureRecognizer:)))
+//        ullpgr.minimumPressDuration = 2
+//        mapView.addGestureRecognizer(ullpgr)
     }
+    
+//    @objc func longpress(gestureRecognizer: UIGestureRecognizer) {
+//        let touchPoint = gestureRecognizer.location(in: self.mapView)
+//        let coordinates = mapView.convert(touchPoint, toCoordinateFrom: self.mapView)
+//    }
     
    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
