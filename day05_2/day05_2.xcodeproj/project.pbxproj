@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5CA6895A225CC02400FB5872 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA68959225CC02400FB5872 /* Map.swift */; };
 		5CB1E63922553FD8001119A5 /* pointOfPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB1E63822553FD8001119A5 /* pointOfPlaces.swift */; };
 		5CFBCBE922550AFB00138D1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFBCBE822550AFB00138D1A /* AppDelegate.swift */; };
 		5CFBCBEB22550AFB00138D1A /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFBCBEA22550AFB00138D1A /* FirstViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5CA68959225CC02400FB5872 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		5CB1E63822553FD8001119A5 /* pointOfPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pointOfPlaces.swift; sourceTree = "<group>"; };
 		5CFBCBE522550AFB00138D1A /* day05_2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = day05_2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CFBCBE822550AFB00138D1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				5CFBCBF122550AFC00138D1A /* Assets.xcassets */,
 				5CFBCBF322550AFC00138D1A /* LaunchScreen.storyboard */,
 				5CFBCBF622550AFC00138D1A /* Info.plist */,
+				5CA68959225CC02400FB5872 /* Map.swift */,
 			);
 			path = day05_2;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CA6895A225CC02400FB5872 /* Map.swift in Sources */,
 				5CFBCBED22550AFB00138D1A /* SecondViewController.swift in Sources */,
 				5CB1E63922553FD8001119A5 /* pointOfPlaces.swift in Sources */,
 				5CFBCBE922550AFB00138D1A /* AppDelegate.swift in Sources */,
