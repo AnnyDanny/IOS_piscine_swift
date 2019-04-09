@@ -19,12 +19,12 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.distanceFilter = 10
         locationManager.startUpdatingLocation()
+        
         displayPlacesTaj()
         displayPlacesNewYork()
         displayPlacesLostallo()
@@ -46,6 +46,19 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate{
         }
     }
     
+    func load() {
+        let location = CLLocationCoordinate2D(latitude: 40.7128, longitude: 74.0060)
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let region = MKCoordinateRegion(center: location, span: span)
+        mapView.setRegion(region, animated: true)
+    }
+    
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+//        print("locations = \(locValue.latitude) \(locValue.longitude)")
+//
+//    }
+    
     @IBAction func MyGeo(_ sender: UIButton) {
         if autorizationStatus == CLAuthorizationStatus.authorizedAlways || autorizationStatus == CLAuthorizationStatus.authorizedWhenInUse {
             let span = MKCoordinateSpan.init(latitudeDelta: 0.0075, longitudeDelta: 0.0075)
@@ -59,15 +72,9 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate{
             }
         }
     }
-    
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
-
 }
 
-}
+
 
 //extension FirstViewController: MKMapViewDelegate {
 //    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
