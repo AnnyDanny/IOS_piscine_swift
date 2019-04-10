@@ -46,12 +46,12 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate{
         }
     }
     
-    func load() {
-        let location = CLLocationCoordinate2D(latitude: 40.7128, longitude: 74.0060)
-        let span = MKCoordinateSpanMake(0.05, 0.05)
-        let region = MKCoordinateRegion(center: location, span: span)
-        mapView.setRegion(region, animated: true)
-    }
+//    func load() {
+//        let location = CLLocationCoordinate2D(latitude: 40.7128, longitude: 74.0060)
+//        let span = MKCoordinateSpanMake(0.05, 0.05)
+//        let region = MKCoordinateRegion(center: location, span: span)
+//        mapView.setRegion(region, animated: true)
+//    }
     
 //    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 //        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }

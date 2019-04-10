@@ -20,58 +20,83 @@ class ViewController: UIViewController {
      var authSession: SFAuthenticationSession?
 
     @IBAction func button(_ sender: UIButton) {
+        print("lol")
         get_session()
+        print("lol2")
     }
     
     func get_session(){
-        
-        authSession = SFAuthenticationSession(url: URL(string: "https://api.intra.42.fr/oauth/authorize?client_id=3d120b3541ccf35990c63c640707e57ab4f618a0c66a01f983d2bb88b81cedd0&redirect_uri=rush00%3A%2F%2Fforum&response_type=code")!, callbackURLScheme: "rush00://forum") {
-            (callBack:URL?, error:Error? ) in
+        let urlParams = "client_id=3d120b3541ccf35990c63c640707e57ab4f618a0c66a01f983d2bb88b81cedd0&redirect_uri=rush00%3A%2F%2Fforum&response_type=code"
+        authSession = SFAuthenticationSession(url: URL(string: "https://api.intra.42.fr/oauth/authorize?\(urlParams)")!, callbackURLScheme: "rush00://forum", completionHandler: { (callBack:URL?, error:Error? ) in
             guard error == nil, let successURL = callBack else {
                 print(error!)
                 return
             }
+<<<<<<< HEAD
             print("succsees")
             print("--->>", successURL.absoluteString)
          
             self.token_access()
         }
+=======
+            print("successURL")
+            print(successURL)
+            var successURL1 = successURL.absoluteString.components(separatedBy: "?")
+
+            print(successURL1)
+            print("lol3")
+            self.token_access(code: successURL1[1])
+            print("lol4")
+        })
+>>>>>>> 09af26dd11d7971053c6ec43b4281fec1c4f6375
         authSession?.start()
+        print("lol")
         
     }
     
+    @IBAction func log(_ sender: UIButton) {
+        print("hhhhhhhhhh")
+        get_session()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    func go(t: String){
+    func go(){
         performSegue(withIdentifier: "toTopics", sender: self)
     }
-    func token_access() {
-        let url = URL(string: "https://api.intra.42.fr/oauth/token?client_id=\(client_id)&client_secret=\(client_secret)&code=\(code_s)")
+    
+    func token_access(code: String?) {
+        let url = URL(string: "https://api.intra.42.fr/oauth/token?client_id=\(client_id)&client_secret=\(client_secret)&\(code ?? "")")
 
         var request = URLRequest(url: url!)
         request.httpMethod = "POST"
         request.httpBody = "grant_type=client_credentials".data(using: String.Encoding.utf8)
 
         DispatchQueue.global().async{
-        let task = URLSession.shared.dataTask(with: request) {data, response, error in
-            if data != nil {
-                do {
-                    if let get : NSDictionary = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
-                        print(get)
-                        self.token = get["access_token"] as? String
-                        self.go(t: self.token!)
+            let task = URLSession.shared.dataTask(with: request) {data, response, error in
+                if data != nil {
+                    do {
+                        if let get : NSDictionary = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
+                            print(get)
+                            self.token = get["access_token"] as? String
+                            self.go()
+                        }
+                    }
+                    catch (let error) {
+                        print(error)
                     }
                 }
+<<<<<<< HEAD
                 catch (let error) {
                     print("error in token access")
                     print(error)
                 }
+=======
+                
+>>>>>>> 09af26dd11d7971053c6ec43b4281fec1c4f6375
             }
-            
-        }
-        task.resume()
+            task.resume()
         }
     }
     
