@@ -39,40 +39,29 @@ class ViewController: UIViewController {
                                 self.answer.text = Forecast.value.0?.currently?.summary
                             }
                         case.failure(let error):
-                            print(error)
+                            print("\nERROR---->>>>>", error)
+                            self.answer.text = "Invalid data"
                         }
                     })
                 }
-            }, failureHandle: { (error) in
-                self.answer.text = "ERROR"
-                print("ERROR")
-            })
-        
-//        bot.textRequest(text, successHandler: { (response) in
-//            if let loc = response.entities!["location"] as? [[String: Any]] {
-//                print("Response = \(loc)")
-//
-//            }
-//            let lat = String(describing: response.entities!["location"])
-//            print("nLat=\(lat)\nlat==\(lat[0][""])")
-//
-//        }, failureHandle: ({ (error) in
-//            print("ERROR")
-//        }))
-    }
-//    self.bot?.textRequest(self.textField.text!, successHandler: recastRequestDone, failureHandle: recastRequestFailed)
+            else {
+                self.answer.text = "Enter valid city"
+                print("Enter valid city")
+            }
+        }, failureHandle: { (error) in
+             self.answer.text = "ERROR"
+             print("ERROR")
+    })
+}
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
