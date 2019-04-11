@@ -24,22 +24,29 @@ class ViewController: UIViewController {
             if let location = response.entities!["location"] as? [[String: Any]] {
                 let lat = location[0]["lat"] as! NSNumber
                 let lng = location[0]["lng"] as! NSNumber
-                print("location----->>>", location)
-                print("lat----->>>>", lat)
-                print("lng----->>>>", lng)
+                print("\nlocation----->>>", location)
+                print("\nlat----->>>>", lat)
+                print("\nlng----->>>>", lng)
                 self.client.getForecast(latitude: Double(truncating: lat), longitude: Double(truncating: lng), completion: { (Forecast) in
-                    DispatchQueue.main.async {
-                        if let ans = Forecast.value.0?.currently?.summary {
-                            print("FORECAST---->>>>", ans)
+                    switch Forecast {
+                        case.success(let currentForecat, let requestData):
+                            print("\ncurrentForecat---->>>>>", currentForecat)
+                            print("\nrequestData------>>>>>>", requestData)
+                            DispatchQueue.main.async {
+                                if let ans = Forecast.value.0?.currently?.summary {
+                                    print("\nFORECAST---->>>>", ans)
+                                }
+                                self.answer.text = Forecast.value.0?.currently?.summary
+                            }
+                        case.failure(let error):
+                            print(error)
                         }
-                        self.answer.text = Forecast.value.0?.currently?.summary
-                    }
-                })
-            }
-        }, failureHandle: { (error) in
-            self.answer.text = "ERROR"
-            print("ERROR")
-        })
+                    })
+                }
+            }, failureHandle: { (error) in
+                self.answer.text = "ERROR"
+                print("ERROR")
+            })
         
 //        bot.textRequest(text, successHandler: { (response) in
 //            if let loc = response.entities!["location"] as? [[String: Any]] {
