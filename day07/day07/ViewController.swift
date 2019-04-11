@@ -17,10 +17,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var answer: UILabel!
     @IBOutlet weak var textField: UITextField!
     @IBAction func sendRequest(_ sender: UIButton) {
-        
-        guard let text = textField.text else { return }
-        
-        self.bot.textRequest(text, successHandler: { (response) in
+        if textField.text != "" {
+            request()
+        }
+        else {
+            answer.text = "Enter city"
+        }
+}
+    
+    func request(){
+        self.bot.textRequest(textField.text!, successHandler: { (response) in
             if let location = response.entities!["location"] as? [[String: Any]] {
                 let lat = location[0]["lat"] as! NSNumber
                 let lng = location[0]["lng"] as! NSNumber
@@ -29,30 +35,30 @@ class ViewController: UIViewController {
                 print("\nlng----->>>>", lng)
                 self.client.getForecast(latitude: Double(truncating: lat), longitude: Double(truncating: lng), completion: { (Forecast) in
                     switch Forecast {
-                        case.success(let currentForecat, let requestData):
-                            print("\ncurrentForecat---->>>>>", currentForecat)
-                            print("\nrequestData------>>>>>>", requestData)
-                            DispatchQueue.main.async {
-                                if let ans = Forecast.value.0?.currently?.summary {
-                                    print("\nFORECAST---->>>>", ans)
-                                }
-                                self.answer.text = Forecast.value.0?.currently?.summary
+                    case.success(let currentForecat, let requestData):
+                        print("\ncurrentForecat---->>>>>", currentForecat)
+                        print("\nrequestData------>>>>>>", requestData)
+                        DispatchQueue.main.async {
+                            if let ans = Forecast.value.0?.currently?.summary {
+                                print("\nFORECAST---->>>>", ans)
                             }
-                        case.failure(let error):
-                            print("\nERROR---->>>>>", error)
-                            self.answer.text = "Invalid data"
+                            self.answer.text = Forecast.value.0?.currently?.summary
                         }
-                    })
-                }
+                    case.failure(let error):
+                        print("\nERROR---->>>>>", error)
+                        self.answer.text = "Invalid data"
+                    }
+                })
+            }
             else {
-                self.answer.text = "Enter valid city"
-                print("Enter valid city")
+                self.answer.text = "Location not found, enter valid city"
+                print("Location not found, enter valid city")
             }
         }, failureHandle: { (error) in
-             self.answer.text = "ERROR"
-             print("ERROR")
-    })
-}
+            self.answer.text = "ERROR"
+            print("ERROR")
+        })
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
