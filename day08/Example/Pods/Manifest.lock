@@ -1,0 +1,16 @@
+PODS:
+  - gdanylov2019 (0.1.0)
+
+DEPENDENCIES:
+  - gdanylov2019 (from `../`)
+
+EXTERNAL SOURCES:
+  gdanylov2019:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  gdanylov2019: f1f68675f41749c5638ae19c7155968b9329ec7c
+
+PODFILE CHECKSUM: 6bfb7ed1f6884a1aa975ff90cc1ab0c91c604023
+
+COCOAPODS: 1.7.0.beta.3

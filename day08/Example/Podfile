@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'gdanylov2019_Example' do
+  pod 'gdanylov2019', :path => '../'
+
+  target 'gdanylov2019_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

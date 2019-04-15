@@ -1,0 +1,6 @@
+framework module Pods_gdanylov2019_Example {
+  umbrella header "Pods-gdanylov2019_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

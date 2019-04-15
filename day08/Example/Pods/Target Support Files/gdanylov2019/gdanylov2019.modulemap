@@ -1,0 +1,6 @@
+framework module gdanylov2019 {
+  umbrella header "gdanylov2019-umbrella.h"
+
+  export *
+  module * { export * }
+}
